@@ -103,7 +103,7 @@ unsigned int apply_deadzone(unsigned int value) {
 }
 
 void control_drive_motor(int speed) {
-  int mappedSpeed = map(abs(speed - DEADZONE_CENTER), 0, 500, 0, MAX_MOTOR_SPEED);
+  int mappedSpeed = map(abs(speed - DEADZONE_CENTER), 0, 500, 0, 255);
   if (mappedSpeed < MIN_MOTOR_SPEED) {
     mappedSpeed = 0;
   }
@@ -121,6 +121,7 @@ void control_drive_motor(int speed) {
   
   analogWrite(ENA, mappedSpeed);
 }
+
 
 void control_steering_motor(int position) {
   unsigned long current_time = millis();
